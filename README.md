@@ -12,6 +12,13 @@ Jirex is a simple client for JIRA REST API.
 
 ## Configuration
 
+First generate your api key using your username and password:
+
+  - Construct the following string with your credentials: `user:passwd`
+  - Encode with Base 64 the generated string
+
+Then proceed to configure jirex:
+
   - `export JIRA_API_KEY=<insert_jira_api_key_here>`
   - `export JIRA_API_URL=<insert_jira_api_url_here>`
 
@@ -19,7 +26,7 @@ Jirex is a simple client for JIRA REST API.
 
 Jirex curently supports get action for issues.
 
-#### Jirex.Issue
+### Jirex.Issue
 
 To get a issue with key TEST-14 do:
 

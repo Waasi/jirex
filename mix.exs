@@ -3,10 +3,10 @@ defmodule Jirex.Mixfile do
 
   def project do
     [app: :jirex,
-     version: "0.1.0",
+     version: "0.0.1",
      elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
+     description: "A simple client for JIRA REST API",
+     package: package,
      deps: deps()]
   end
 
@@ -15,6 +15,15 @@ defmodule Jirex.Mixfile do
   end
 
   defp deps do
-    [{:httpoison, "~> 0.9.0"}, {:poison, "~> 3.0"}]
+    [{:httpoison, "~> 0.9.0"}, {:poison, "~> 3.0"}, {:ex_doc, ">= 0.0.0", only: :dev}]
+  end
+
+  def package do
+    [ name: :jirex,
+      files: ["lib", "mix.exs"],
+      maintainers: ["Eric Santos"],
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/Waasi/jirex"}
+    ]
   end
 end
