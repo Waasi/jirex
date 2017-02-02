@@ -6,7 +6,7 @@ Jirex is a simple client for JIRA REST API.
 
   ```elixir
   def deps do
-    [{:jirex, "~> 0.1.0"}]
+    [{:jirex, "~> 0.0.2"}]
   end
   ```
 
@@ -33,6 +33,12 @@ To get a issue with key TEST-14 do:
 ```elixir
 iex> Jirex.Issue.get("TEST-14")
 {:ok, %Jirex.Issue{assignee: "Juan del Pueblo", status: "In Progress", summary: "Hello", desciption: "weepaaa"}}
+```
+To search for issues do:
+
+```elixir
+iex> Jirex.Issue.search(%{"status" => 3})
+{:ok, [%Jirex.Issue{assignee: "Juan del Pueblo", status: "In Progress", summary: "Hello", desciption: "weepaaa"}]}
 ```
 
 ## Contributing
