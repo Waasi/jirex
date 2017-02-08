@@ -7,6 +7,7 @@ defmodule Jirex.Endpoint do
   ### Functions
       - issue_get/0
       - issue_search/1
+      - issue_transitions/1
   """
 
   @doc """
@@ -25,9 +26,9 @@ defmodule Jirex.Endpoint do
 
   @doc """
   The issue_search/1 function returns the
-  corrsponding url for the issue
-  resource endpoint using the configured
-  api url.
+  corresponding url for the issue resource
+  search endpoint using the configured api
+  url.
 
   ### Example
       iex> Jirex.Endpoint.issue_search(%{assignee: "Eric"})
@@ -42,6 +43,21 @@ defmodule Jirex.Endpoint do
       |> Enum.join("&")
 
     Application.get_env(:jirex, :jira_api_url) <> "/search?jql=#{predicate}"
+  end
+
+  @doc """
+  The issue_transitions/2 function returns the
+  corresponding url for the issue transactions
+  resource endpoint using the configured api url.
+
+  ### Example
+      iex> Jirex.Endpoint.issue_transitions("TEST-14")
+      "https://someteam.atlassian.net/rest/api/2/issue/TEST-14/transitions"
+  """
+
+  @spec issue_transitions(String.t()) :: String.t()
+  def issue_transitions(issue) do
+    Application.get_env(:jirex, :jira_api_url) <> "/issue/#{issue}/transitions"
   end
 
   #####

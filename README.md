@@ -6,7 +6,7 @@ Jirex is a simple client for JIRA REST API.
 
   ```elixir
   def deps do
-    [{:jirex, "~> 0.0.2"}]
+    [{:jirex, "~> 0.0.3"}]
   end
   ```
 
@@ -39,6 +39,20 @@ To search for issues do:
 ```elixir
 iex> Jirex.Issue.search(%{"status" => 3})
 {:ok, [%Jirex.Issue{assignee: "Juan del Pueblo", status: "In Progress", summary: "Hello", desciption: "weepaaa"}]}
+```
+
+To get transitions for an issue do:
+
+```elixir
+iex> Jirex.Issue.transitions("TEST-14")
+{:ok, %{"Done" => "31", "In Progress" => "21", "To Do" => "11"}}
+```
+
+To move an issue to another column via transition do:
+
+```elixir
+iex> Jirex.Issue.move("TEST-14", "Done")
+:ok
 ```
 
 ## Contributing

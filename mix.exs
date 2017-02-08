@@ -3,7 +3,7 @@ defmodule Jirex.Mixfile do
 
   def project do
     [app: :jirex,
-     version: "0.0.2",
+     version: "0.0.3",
      elixir: "~> 1.3",
      description: "A simple client for JIRA REST API",
      package: package,
